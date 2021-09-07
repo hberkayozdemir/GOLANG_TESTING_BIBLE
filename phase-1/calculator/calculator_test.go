@@ -19,14 +19,31 @@ func TestCalculateIsArmstrong(t *testing.T) {
 	   	FAIL    github.com/hberkayozdemir/GOLANG_TESTING_BIBLE/calculator       0.001s
 	   	FAIL */
 
-	testCase := TestCase{
+	t.Run("should return true for 371",func(t *testing.T){
+		testCase := TestCase{
 		value:    371,
 		expected: true,
-	}
+	}	
 	testCase.actual = calculator.CalculateIsArmstrong(testCase.value)
 	if testCase.actual != testCase.expected {
 		t.Fail()
 	}
+	})
+
+
+	t.Run("should return true for 370",func(t *testing.T){
+		testCase := TestCase{
+			value:    370,
+			expected: true,
+		}	
+		testCase.actual = calculator.CalculateIsArmstrong(testCase.value)
+		if testCase.actual != testCase.expected {
+			t.Fail()
+		}
+
+	})
+
+
 
 	/*
 	   === RUN   TestCalculateIsArmstrong
@@ -36,6 +53,9 @@ func TestCalculateIsArmstrong(t *testing.T) {
 }
 
 func TestNegativeCalculateIsArmstrong(t *testing.T) {
+
+	t.Run("Should fail for case 350",func(t *testing.T){
+
 	testCase := TestCase{
 		value:    350,
 		expected: false,
@@ -44,4 +64,17 @@ func TestNegativeCalculateIsArmstrong(t *testing.T) {
 	if testCase.actual != testCase.expected {
 		t.Fail()
 	}
+	})
+
+	t.Run("Should fail for case 300",func(t *testing.T){
+
+		testCase := TestCase{
+			value:    300,
+			expected: false,
+		}
+		testCase.actual = calculator.CalculateIsArmstrong(testCase.value)
+		if testCase.actual != testCase.expected {
+			t.Fail()
+		}
+		})
 }
